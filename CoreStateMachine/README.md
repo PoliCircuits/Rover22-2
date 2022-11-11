@@ -2,10 +2,11 @@
 
 A continuación se muestra la definición de la maquina de estado denominada como el core de nuesto Rover.
 
-<img src="./docs/state_machine.jpeg" 
-    alt="drawing"
-    width="65%" 
-    style="display: block; margin: 0 auto"/>
+<p align="center">
+    <img src="./docs/state_machine.jpeg" 
+        alt="diagram state machine"
+        width="65%" />
+</p>
 
 Nuestra maquina de estado contempla 5 estados: 
 - Apagado
