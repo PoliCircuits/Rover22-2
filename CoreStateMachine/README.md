@@ -5,7 +5,7 @@ A continuación se muestra la definición de la maquina de estado denominada com
 <p align="center">
     <img src="./docs/state_machine.jpeg" 
         alt="diagram state machine"
-        width="65%" />
+        width="55%" />
 </p>
 
 Nuestra maquina de estado contempla 5 estados: 
