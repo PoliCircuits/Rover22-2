@@ -8,37 +8,38 @@ const int pinCSN = 48;
 RF24 radio(pinCE, pinCSN);
 
 // Single radio pipe address for the 2 nodes to communicate.
-const byte pipe [][6] = {"00001","00002"};
+const uint64_t pipe = 0xE8E8F0F0E1LL;
+const uint64_t pipe2 = 0xE9E8F0F0E1LL;
 
-float data[2];
-float data2[2];
+float firstdata[2];
+float seconddata[2];
 
 void setup(void)
 {
    Serial.begin(9600);
    radio.begin();
-   radio.openWritingPipe(pipe[0]);
-   radio.openReadingPipe(1,pipe[1]);
-   
+   radio.openWritingPipe(pipe);
+   radio.openReadingPipe(1,pipe2);  
 }
  
 void loop(void)
 {
   delay(5);
-  data2[0]=3000;
-  data2[1]=15.00;
+  seconddata[0]=3000;
+  seconddata[1]=15.00;
+  radio.stopListening();
+  radio.write(seconddata , sizeof seconddata);
+  delay(5);
+  //
   radio.startListening();
    if (radio.available())
    {
-      radio.read(data, sizeof data); 
+      radio.read(firstdata, sizeof firstdata); 
       Serial.print("dato 0= ");
-      Serial.print(data[0]);
+      Serial.print(firstdata[0]);
+      Serial.print(" ");
       Serial.print("dato 1= ");
-      Serial.println(data[1]);
+      Serial.println(firstdata[1]);
    }
-   else {
-    Serial.println("sin datos de radio recibidos");
-    }
-    delay(5);
-    radio.stopListening();
+    
 }
